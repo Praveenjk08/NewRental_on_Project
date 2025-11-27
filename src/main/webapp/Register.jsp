@@ -1,22 +1,31 @@
-<%@page import="java.time.LocalDate"%>
-<%@page import="java.time.LocalDateTime"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User Registration</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<form action="reg" method="post">
-<input type="text" placeholder="Enter the username" name="name" required>
-<input type="email" placeholder="Enter the email" name="email"  required>
-<input type="password" placeholder="Enter the password" name="pass" required>
-<input type="tel" placeholder="Enter the PhoneNumber" name="ph" required>
-<input type="date" placeholder="Enter the date" name="date" value="<%=java.time.LocalDate.now()%>" readonly>
-<button type="submit">Registaion</button>
-</form>
 
+<%@ include file="NavBar.jsp" %>
+
+<div class="form-box fade-in">
+  <h2>📝 Create Account</h2>
+
+  <form action="reg" method="post">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="password" name="pass" placeholder="Password" required>
+    <input type="tel" name="ph" placeholder="Phone Number" required>
+
+    <input type="date" name="date" value="<%= java.time.LocalDate.now() %>" readonly>
+
+    <button class="btn">Register 🚀</button>
+  </form>
+</div>
+
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

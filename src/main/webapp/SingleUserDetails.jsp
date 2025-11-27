@@ -1,45 +1,37 @@
-<%@page import="com.servlet.Dto.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="com.servlet.Dto.User" %>
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User Details</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%User user=(User)request.getAttribute("userrod"); %>
 
-<table border="2">
-<tr>
-<td colspan="7" style="align-items: center;"><centere>UserDetails</centere></td>
+<%@ include file="NavBar.jsp" %>
 
-</tr>
-<tr>
-<td>User_Id</td>
-<td>User_Name</td>
-<td>User_Email</td>
-<td>User_Password</td>
-<td>User_Phone</td>
-<td>User_Enter_Time</td>
-<td>Action</td>
+<%
+   User user = (User) request.getAttribute("userrod");
+%>
 
-</tr>
-<tr>
-<td><%=user.getU_id()%></td>
-<td><%=user.getFullname()%></td>
-<td><%=user.getEmail()%></td>
-<td><%=user.getPass()%></td>
-<td><%=user.getPhone()%></td>
-<td><%=user.getCurrDateTime()%></td>
-<td>
-<!-- <a href="edit?e=<%=user.getU_id()%>">Edit</a> -->
- <a href="edit1?e1=<%=user.getU_id()%>">Edit</a>
-</td>
-</tr>
+<div class="container fade-in">
+  <div class="card">
+    <h2>👤 User Details</h2>
 
+    <table class="table">
+      <tr><th>ID</th><td><%= user.getU_id() %></td></tr>
+      <tr><th>Name</th><td><%= user.getFullname() %></td></tr>
+      <tr><th>Email</th><td><%= user.getEmail() %></td></tr>
+      <tr><th>Phone</th><td><%= user.getPhone() %></td></tr>
+      <tr><th>Created At</th><td><%= user.getCurrDateTime() %></td></tr>
+    </table>
 
+    <a class="btn" href="edit1?e1=<%= user.getU_id()%>">✏️ Edit Profile</a>
+  </div>
+</div>
 
-</table>
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

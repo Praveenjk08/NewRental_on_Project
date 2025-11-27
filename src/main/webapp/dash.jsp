@@ -1,27 +1,33 @@
-<%@page import="java.util.Arrays"%>
-<%@page import="java.util.List"%>
-<%@page import="com.servlet.Dto.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="com.servlet.Dto.User" %>
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%User user1=(User)session.getAttribute("user"); 
 
+<%@ include file="NavBar.jsp" %>
+
+<%
+    User user = (User) session.getAttribute("user");
 %>
-<h1>Hello dashboard <mark><%=user1.getFullname() %>
-</mark></h1>
-<h2>
-<%=user1.getU_id() %>
-</h2>
-<!-- <a href="adminreg.jsp">Admin</a>
- -->
- <a href="viewuser1?view=<%=user1.getU_id()%>">UserDetails</a>
- 
- <a href="vehicledetails">VehicleDetails</a>
-</body>
-</html>
+
+<div class="container fade-in">
+
+  <div class="card">
+    <h1>👋 Hello, <%= user.getFullname() %>!</h1>
+    <p>Welcome to your Skyline Rentals dashboard 🌟</p>
+
+    <div style="margin-top:20px;">
+      <a class="btn" href="vehicledetails">Browse Vehicles 🚘</a>
+      <a class="btn" href="viewuser1?view=<%= user.getU_id() %>">View Profile 👤</a>
+    </div>
+  </div>
+
+</div>
+
+<%@ include file="Footer.jsp" %>

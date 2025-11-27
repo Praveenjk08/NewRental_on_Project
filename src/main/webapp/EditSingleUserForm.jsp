@@ -1,24 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@page import="com.servlet.Dto.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="com.servlet.Dto.User" %>
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edit User</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%User user=(User)request.getAttribute("editusers");%>
-<form action="update1" method="get">
-<%=user.getU_id()%><input type="hidden" placeholder="Enter the user id" name="uid" value="<%=user.getU_id()%>"><br>
-UserName<br><input type="text" placeholder="Enter the user name" name="name" value="<%=user.getFullname()%>"><br>
-UserEmail <br> <input type="email" placeholder="Enter the user mail" name="email" value="<%=user.getEmail()%>"><br>
-UserPassword <br> <input type="password" placeholder="Enter your password" name="pass" value="<%=user.getPass()%>"><br>
-UserPhoneNumber <br> <input type="tel" placeholder="enter your phone" name="ph" value="<%=user.getPhone()%>">
-<br>
-<input type="submit" value="Edit1">
-</form>
 
+<%@ include file="NavBar.jsp" %>
+
+<%
+   User user = (User) request.getAttribute("editusers");
+%>
+
+<div class="form-box fade-in">
+  <h2>✏️ Edit User</h2>
+
+  <form action="update1" method="get">
+    <input type="hidden" name="uid" value="<%= user.getU_id() %>">
+
+    <input type="text" name="name" value="<%= user.getFullname() %>" required>
+    <input type="email" name="email" value="<%= user.getEmail() %>" required>
+    <input type="password" name="pass" value="<%= user.getPass() %>" required>
+    <input type="tel" name="ph" value="<%= user.getPhone() %>" required>
+
+    <button class="btn">Update ✔️</button>
+  </form>
+
+</div>
+
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

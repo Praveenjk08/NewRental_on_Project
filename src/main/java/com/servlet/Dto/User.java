@@ -16,9 +16,6 @@ public class User {
 			
 		}
 		
-		
-		
-
 		public User(String fullname, String email, String pass, long phone) {
 			super();
 			this.fullname = fullname;
@@ -64,12 +61,6 @@ public class User {
 		public void setCurrDateTime(Timestamp currDateTime) {
 			this.currDateTime = currDateTime;
 		}
-
-		
-		
-		
-
-	
 
 
 }
