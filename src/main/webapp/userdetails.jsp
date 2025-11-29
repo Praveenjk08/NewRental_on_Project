@@ -1,60 +1,56 @@
-<%@page import="java.sql.Timestamp"%>
-<%@page import="java.util.List"%>
-<%@page import="com.servlet.Dto.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.List" %>
+<%@ page import="com.servlet.Dto.User" %>
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-.user
-{
-font-size: 40px;
-}
-</style>
+<title>All Users</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%List<User> userlist=(List<User>)request.getAttribute("userlist1"); %>
-<table border="1" cellspacing="5px"  cellpadding="10px" >
 
-<tr>
-<td colspan="6" style="text-align: center;" class="user">User_Details </td>
-</tr>
+<%@ include file="NavBar.jsp" %>
 
-<tr>
-<th>User_id</th>
-<th>Name</th>
-<th>Email</th>
-<th>Phone-Number</th>
-<th>Time and Date</th>
-<th>Action</th>
+<div class="container fade-in">
 
-</tr>
+  <div class="card">
+    <h2>👥 User List</h2>
 
-<% 
-for(User ulist:userlist) { %>
-	
-	<tr>
-	<th><%=ulist.getU_id()%></th>
-	<th><%=ulist.getFullname()%></th>
-	<th><%=ulist.getEmail()%></th>
-	<th><%=ulist.getPhone()%></th>
-	<th><%=ulist.getCurrDateTime()%></th>
-	<th>
-	 <a href="delete?d=<%=ulist.getU_id()%>">Delete</a>
-	<a href="edit?e=<%=ulist.getU_id()%>">Edit</a> 
-	</th>
-	
-     </tr>
-	<%
-	} 
+    <%
+        List<User> userlist = (List<User>) request.getAttribute("userlist1");
+    %>
 
-	%>
+    <table class="table">
+      <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Date</th><th>Action</th>
+      </tr>
 
-	
-</table>
+      <% if (userlist != null) {
+          for (User u : userlist) { %>
 
+        <tr>
+          <td><%= u.getU_id() %></td>
+          <td><%= u.getFullname() %></td>
+          <td><%= u.getEmail() %></td>
+          <td><%= u.getPhone() %></td>
+          <td><%= u.getCurrDateTime() %></td>
+
+          <td>
+            <a href="delete?d=<%= u.getU_id() %>">🗑️ Delete</a> |
+            <a href="edit?e=<%= u.getU_id() %>">✏️ Edit</a>
+          </td>
+        </tr>
+
+      <% } } %>
+
+    </table>
+
+  </div>
+
+</div>
+
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

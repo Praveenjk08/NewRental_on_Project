@@ -1,40 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-.main{
-display: flex;
-align-items: center;
-justify-content: space-between;
-border: 2px solid black;
-height: 100px;
+<div class="navbar">
+  <div class="brand" style="font-size: 20px; font-weight: 700;">
+    🚗 Skyline Rentals
+  </div>
 
-
-}
-
-</style>
-</head>
-
-
-
-
-<body>
-<div class="main">
-<div class="left">
-<a href="">Logo</a>
-
+  <div class="nav-links">
+    <a href="index.jsp">Home</a>
+    <a href="Vehicledetails.jsp">Vehicles</a>
+    <a href="Register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+    <a href="adminlogin.jsp">Admin</a>
+  </div>
 </div>
-<div class="right">
-<a href="">UserLogin</a>
-<a href="">UserDashboard</a>
-
-</div>
-
-</div>
-</body>
-</html>

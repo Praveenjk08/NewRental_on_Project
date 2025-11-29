@@ -1,23 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Registration</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%--<% User user=(User)session.getAttribute("user"); %> --%>
-<form action="adminreg" method="post">
-<%-- <input type="number" value="<%=user.getUid()%>" readonly> --%>
-<input type="text" placeholder="Enter your name" name="aname" required>
-<input type="email" placeholder="Enter your email" name="aemail" required>
-<input type="password" placeholder="Enter your password" name="apass" required>
-<input type="tel" placeholder="Enter your Phone-Number" name="aph" required>
-<input type="date" value="<%=java.time.LocalDate.now()%>" readonly name="adate">
-<button type="submit">AdminRgistaion</button>
-</form>
 
+<%@ include file="NavBar.jsp" %>
+
+<div class="form-box fade-in">
+  <h2>👑 Admin Registration</h2>
+
+  <form action="adminreg" method="post">
+    <input type="text" name="aname" placeholder="Admin Name" required>
+    <input type="email" name="aemail" placeholder="Admin Email" required>
+    <input type="password" name="apass" placeholder="Admin Password" required>
+    <input type="tel" name="aph" placeholder="Phone Number" required>
+
+    <input type="date" name="adate" value="<%= java.time.LocalDate.now() %>" readonly>
+
+    <button class="btn">Create Admin</button>
+  </form>
+</div>
+
+<%@ include file="Footer.jsp" %>
 </body>
 </html>
